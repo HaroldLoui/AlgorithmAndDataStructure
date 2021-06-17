@@ -1,1 +1,5 @@
-# AlgorithmAndDataStructure
+# 算法与数据结构学习
+
+一、查找算法：
+
+- 线性查找法
