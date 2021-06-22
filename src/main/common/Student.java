@@ -29,12 +29,17 @@ public class Student {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+
+        if (o == null || this.getClass() != o.getClass())
+            return false;
 
         Student student = (Student) o;
 
-        if (!name.equals(student.name)) return false;
-        return idCard.equals(student.idCard);
+        if (!this.name.equals(student.name))
+            return false;
+
+        return this.idCard.equals(student.idCard);
     }
 }
