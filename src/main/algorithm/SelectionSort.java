@@ -1,5 +1,6 @@
 package main.algorithm;
 
+import main.common.Student;
 import main.utils.ArrayOperatorUtils;
 
 public class SelectionSort {
@@ -27,10 +28,14 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {6, 4, 2, 3, 1, 5};
-        SelectionSort.sort(arr);
-        for (int i : arr) {
-            System.out.print(i + " ");
+        Student[] students = {
+                new Student("AAA", "111", 90),
+                new Student("BBB", "222", 95),
+                new Student("CCC", "333", 85),
+        };
+        SelectionSort.sort(students);
+        for (Student student : students) {
+            System.out.println(student);
         }
     }
 }
