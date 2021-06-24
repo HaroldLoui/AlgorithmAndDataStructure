@@ -1,6 +1,6 @@
 package main.algorithm;
 
-import main.utils.ArrayGenerator;
+import main.utils.ArrayOperatorUtils;
 
 public class LinearSearch {
 
@@ -19,7 +19,7 @@ public class LinearSearch {
 
         int[] dataSize = {1000000, 10000000};
         for (int n : dataSize) {
-            Integer[] data = ArrayGenerator.generateOrderedArray(n);
+            Integer[] data = ArrayOperatorUtils.generateOrderedArray(n);
 
             long startTime = System.nanoTime();
             for (int i = 0; i < 100; i++) {

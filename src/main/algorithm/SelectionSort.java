@@ -1,8 +1,10 @@
 package main.algorithm;
 
-public class SectionSort {
+import main.utils.ArrayOperatorUtils;
 
-    private SectionSort() {}
+public class SelectionSort {
+
+    private SelectionSort() {}
 
     public static void sort(int[] arr) {
         // arr[0...i) 已排序
@@ -20,15 +22,13 @@ public class SectionSort {
                 continue;
             }
             // 交换arr[i]与arr[minIndex]，将最小值放到arr[i]的位置上，保证arr[0...i) 已排序
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
+            ArrayOperatorUtils.swap(arr, i, minIndex);
         }
     }
 
     public static void main(String[] args) {
         int[] arr = {6, 4, 2, 3, 1, 5};
-        sort(arr);
+        SelectionSort.sort(arr);
         for (int i : arr) {
             System.out.print(i + " ");
         }
