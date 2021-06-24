@@ -27,8 +27,8 @@ public class ArrayOperatorUtils {
      * @param i 第一个下标
      * @param j 第二个下标
      */
-    public static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
+    public static <E> void swap(E[] arr, int i, int j) {
+        E temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }

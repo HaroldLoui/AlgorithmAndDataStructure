@@ -6,14 +6,14 @@ public class SelectionSort {
 
     private SelectionSort() {}
 
-    public static void sort(int[] arr) {
+    public static <E extends Comparable<E>> void sort(E[] arr) {
         // arr[0...i) 已排序
         for (int i = 0; i < arr.length - 1; i++) {
             // 查找当前数组的最小值
             int minIndex = i;
             // arr[i...n) 未排序
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] <= arr[minIndex]) {
+                if (arr[j].compareTo(arr[minIndex]) <= 0) {
                     minIndex = j;
                 }
             }
@@ -27,7 +27,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {6, 4, 2, 3, 1, 5};
+        Integer[] arr = {6, 4, 2, 3, 1, 5};
         SelectionSort.sort(arr);
         for (int i : arr) {
             System.out.print(i + " ");

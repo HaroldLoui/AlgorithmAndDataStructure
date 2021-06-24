@@ -6,6 +6,13 @@ public class LinearSearch {
 
     private LinearSearch() {}
 
+    /**
+     * 在数组data中查找target，并返回对应下标，未找到返回-1
+     * @param data 数组
+     * @param target 目标
+     * @param <E> 范型
+     * @return 返回对应下标，未找到返回-1
+     */
     public static <E> int search(E[] data, E target) {
         for (int i = 0; i < data.length; i++) {
             if (data[i].equals(target)) {
