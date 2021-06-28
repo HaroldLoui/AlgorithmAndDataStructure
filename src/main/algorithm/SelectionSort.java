@@ -28,8 +28,10 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int n = 10000;
-        Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-        SortingHelper.sortTest(SelectionSort.class, arr);
+        int[] dataSize = { 10000, 100000 };
+        for (int n : dataSize) {
+            Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+            SortingHelper.sortTest(SelectionSort.class, arr);
+        }
     }
 }

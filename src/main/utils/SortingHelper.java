@@ -57,9 +57,10 @@ public class SortingHelper {
         try {
             String className = clazz.getSimpleName();
             Method method = clazz.getDeclaredMethod(sortName, Comparable[].class);
+            Object[] params = new Object[]{ arr };
 
             long startTime = System.nanoTime();
-            method.invoke(null, (Object) arr);
+            method.invoke(null, params);
             long endTime = System.nanoTime();
 
             double time = (endTime - startTime) / 1000000000.0;
