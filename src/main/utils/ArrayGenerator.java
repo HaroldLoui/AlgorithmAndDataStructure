@@ -5,9 +5,9 @@ import java.util.Random;
 /**
  * 数组操作工具类
  */
-public class ArrayOperatorUtils {
+public class ArrayGenerator {
 
-    private ArrayOperatorUtils() {}
+    private ArrayGenerator() {}
 
     /**
      * 生成n个有序的数组
@@ -37,17 +37,5 @@ public class ArrayOperatorUtils {
             arr[i] = random.nextInt(bound);
         }
         return arr;
-    }
-
-    /**
-     * 交换数组两下标的数据
-     * @param arr 数组
-     * @param i 第一个下标
-     * @param j 第二个下标
-     */
-    public static <E> void swap(E[] arr, int i, int j) {
-        E temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
     }
 }

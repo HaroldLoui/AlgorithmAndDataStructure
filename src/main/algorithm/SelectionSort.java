@@ -1,7 +1,7 @@
 package main.algorithm;
 
-import main.common.Student;
-import main.utils.ArrayOperatorUtils;
+import main.utils.ArrayGenerator;
+import main.utils.SortingHelper;
 
 public class SelectionSort {
 
@@ -23,18 +23,22 @@ public class SelectionSort {
                 continue;
             }
             // 交换arr[i]与arr[minIndex]，将最小值放到arr[i]的位置上，保证arr[0...i) 已排序
-            ArrayOperatorUtils.swap(arr, i, minIndex);
+            SortingHelper.swap(arr, i, minIndex);
         }
     }
 
     public static void main(String[] args) {
         int n = 10000;
-        Integer[] arr = ArrayOperatorUtils.generateRandomArray(n, n);
+        Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
         long startTime = System.nanoTime();
         SelectionSort.sort(arr);
         long endTime = System.nanoTime();
 
         double time = (endTime - startTime) / 1000000000.0;
+
+        if (!SortingHelper.isSorted(arr)) {
+            throw new RuntimeException("SelectionSort failed");
+        }
         System.out.println(time + " s");
     }
 }
