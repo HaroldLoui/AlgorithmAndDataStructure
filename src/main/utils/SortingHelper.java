@@ -49,14 +49,14 @@ public class SortingHelper {
     /**
      * 通过反射机制调用排序方法测试该排序算法的性能
      * @param clazz 排序类
-     * @param sortName 排序方法名称
+     * @param sortMethodName 排序方法名称
      * @param arr 测试的数组
      * @param <E> 范型
      */
-    public static <E extends Comparable<E>> void sortTest(Class<?> clazz, String sortName, E[] arr) {
+    public static <E extends Comparable<E>> void sortTest(Class<?> clazz, String sortMethodName, E[] arr) {
         try {
             String className = clazz.getSimpleName();
-            Method method = clazz.getDeclaredMethod(sortName, Comparable[].class);
+            Method method = clazz.getDeclaredMethod(sortMethodName, Comparable[].class);
             Object[] params = new Object[]{ arr };
 
             long startTime = System.nanoTime();
