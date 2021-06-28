@@ -28,14 +28,13 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        Student[] students = {
-                new Student("AAA", "111", 90),
-                new Student("BBB", "222", 95),
-                new Student("CCC", "333", 85),
-        };
-        SelectionSort.sort(students);
-        for (Student student : students) {
-            System.out.println(student);
-        }
+        int n = 10000;
+        Integer[] arr = ArrayOperatorUtils.generateRandomArray(n, n);
+        long startTime = System.nanoTime();
+        SelectionSort.sort(arr);
+        long endTime = System.nanoTime();
+
+        double time = (endTime - startTime) / 1000000000.0;
+        System.out.println(time + " s");
     }
 }
