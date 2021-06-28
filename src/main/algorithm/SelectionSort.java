@@ -30,15 +30,6 @@ public class SelectionSort {
     public static void main(String[] args) {
         int n = 10000;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-        long startTime = System.nanoTime();
-        SelectionSort.sort(arr);
-        long endTime = System.nanoTime();
-
-        double time = (endTime - startTime) / 1000000000.0;
-
-        if (!SortingHelper.isSorted(arr)) {
-            throw new RuntimeException("SelectionSort failed");
-        }
-        System.out.println(time + " s");
+        SortingHelper.sortTest(SelectionSort.class, arr);
     }
 }

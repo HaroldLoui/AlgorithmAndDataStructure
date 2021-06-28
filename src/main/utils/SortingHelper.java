@@ -1,5 +1,10 @@
 package main.utils;
 
+import java.lang.reflect.Method;
+
+/**
+ * 排序算法工具类
+ */
 public class SortingHelper {
 
     private SortingHelper() {}
@@ -23,11 +28,48 @@ public class SortingHelper {
      * @return true：排序成功 false：排序失败
      */
     public static <E extends Comparable<E>> boolean isSorted(E[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i - 1].compareTo(arr[i]) > 0) {
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (arr[i - 1].compareTo(arr[i]) > 0 && arr[i].compareTo(arr[i + 1]) < 0) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * 通过反射机制调用排序方法测试该排序算法的性能，默认排序方法名称是“sort”
+     * @param clazz 排序类
+     * @param arr 测试的数组
+     * @param <E> 范型
+     */
+    public static <E extends Comparable<E>> void sortTest(Class<?> clazz, E[] arr) {
+        sortTest(clazz, "sort", arr);
+    }
+
+    /**
+     * 通过反射机制调用排序方法测试该排序算法的性能
+     * @param clazz 排序类
+     * @param sortName 排序方法名称
+     * @param arr 测试的数组
+     * @param <E> 范型
+     */
+    public static <E extends Comparable<E>> void sortTest(Class<?> clazz, String sortName, E[] arr) {
+        try {
+            String className = clazz.getSimpleName();
+            Method method = clazz.getDeclaredMethod(sortName, Comparable[].class);
+
+            long startTime = System.nanoTime();
+            method.invoke(null, (Object) arr);
+            long endTime = System.nanoTime();
+
+            double time = (endTime - startTime) / 1000000000.0;
+
+            if (!isSorted(arr)) {
+                throw new RuntimeException(className + " failed");
+            }
+            System.out.printf("%s success, n = %d : %f s\n", className, arr.length, time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
