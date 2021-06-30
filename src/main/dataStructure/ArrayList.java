@@ -51,4 +51,56 @@ public class ArrayList {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    /**
+     * 向动态数组最后一个位置添加一个新的元素（暂未进行扩容操作！）
+     * @param e 待添加的元素
+     */
+    public void addLast(int e) {
+        add(e, size);
+    }
+
+    /**
+     * 向动态数组指定位置添加一个新的元素
+     * @param e 待添加的元素
+     * @param index 指定的位置
+     */
+    public void add(int e, int index) {
+        if (size == data.length) {
+            throw new IllegalArgumentException("Add failed. ArrayList is full.");
+        }
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed. Index is illegal.");
+        }
+        for (int i = size - 1; i >= index; i--) {
+            data[i + 1] = data[i];
+        }
+        data[index] = e;
+        size++;
+    }
+
+    /**
+     * 向动态数组第一个位置添加一个新的元素（暂未进行扩容操作！）
+     * @param e 待添加的元素
+     */
+    public void addFirst(int e) {
+        add(e, 0);
+    }
+
+    /**
+     * 打印当前数组
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(data[i]);
+            if (i != size - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -17,25 +17,30 @@
 测试用例：
 
 ```java
-int[] dataSize = { 10000, 100000 };
-for (int n : dataSize) {
+public class Main {
 
-    System.out.println("Random Array:");
+    public static void main(String[] args) {
+        int[] dataSize = { 10000, 100000 };
+        for (int n : dataSize) {
 
-    Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-    Integer[] arr1 = Arrays.copyOf(arr, arr.length);
-    SortingHelper.sortTest(InsertionSort.class, arr);
-    SortingHelper.sortTest(SelectionSort.class, arr1);
+            System.out.println("Random Array:");
 
-    System.out.println("===================");
-    System.out.println("Ordered Array:");
+            Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+            Integer[] arr1 = Arrays.copyOf(arr, arr.length);
+            SortingHelper.sortTest(InsertionSort.class, arr);
+            SortingHelper.sortTest(SelectionSort.class, arr1);
 
-    arr = ArrayGenerator.generateOrderedArray(n);
-    arr1 = Arrays.copyOf(arr, arr.length);
-    SortingHelper.sortTest(InsertionSort.class, arr);
-    SortingHelper.sortTest(SelectionSort.class, arr1);
-    
-    System.out.println();
+            System.out.println("===================");
+            System.out.println("Ordered Array:");
+
+            arr = ArrayGenerator.generateOrderedArray(n);
+            arr1 = Arrays.copyOf(arr, arr.length);
+            SortingHelper.sortTest(InsertionSort.class, arr);
+            SortingHelper.sortTest(SelectionSort.class, arr1);
+
+            System.out.println();
+        }
+    }
 }
 
 ```
@@ -63,4 +68,8 @@ SelectionSort success, n = 100000 : 8.880783 s
 > 可以很明显的看出来，对于有序的数组，插入排序的效率比选择排序的效率要高得多
 
 ## 数据结构
+
+### 一、线性结构：
+
+#### 1、动态数组：[ArrayList.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java)
 
