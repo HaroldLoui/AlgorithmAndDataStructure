@@ -32,7 +32,7 @@ public class ArrayList {
      * 获取当前动态数组中的元素个数
      * @return size
      */
-    public int getSize() {
+    public int size() {
         return size;
     }
 
@@ -85,6 +85,30 @@ public class ArrayList {
      */
     public void addFirst(int e) {
         add(e, 0);
+    }
+
+    /**
+     * 获取指定位置的元素
+     * @param index 指定的位置
+     * @return 指定位置的元素
+     */
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Add failed. Index is illegal.");
+        }
+        return data[index];
+    }
+
+    /**
+     * 修改指定位置的元素为新的元素
+     * @param e 新的元素
+     * @param index 指定的位置
+     */
+    public void set(int e, int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Add failed. Index is illegal.");
+        }
+        data[index] = e;
     }
 
     /**
