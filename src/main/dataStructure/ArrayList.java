@@ -183,7 +183,7 @@ public class ArrayList<E> {
         size--;
         data[size] = null;
 
-        // 缩容
+        // 缩容（除以4是防止复杂度震荡）
         if (size == data.length / 4 && data.length / 2 > 0) {
             resize(data.length / 2);
         }
@@ -237,7 +237,7 @@ public class ArrayList<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("size = %d, capacity = %d", size, getCapacity())).append("\n");
+//        sb.append(String.format("size = %d, capacity = %d", size, data.length)).append("\n");
         sb.append("[");
         for (int i = 0; i < size; i++) {
             sb.append(data[i]);
