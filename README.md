@@ -73,3 +73,7 @@ SelectionSort success, n = 100000 : 8.880783 s
 
 #### 1、动态数组：[ArrayList.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java)
 
+> 关于范型数组的初始化：Java是并不推荐直接使用`E[] data = (E[]) new Object[n];`的方式进行初始化。
+
+> 建议使用`Object[] data = new Object[n];`，在调用接口时进行强转：`E e = (E) data[index];`。参见：[ArrayList.java#L8](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java#L8)，[ArrayList.java#L96](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java#L96)。
+
