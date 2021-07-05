@@ -112,6 +112,106 @@ public class ArrayList {
     }
 
     /**
+     * 查询动态数组中是否包含元素e
+     * @param e 元素e
+     * @return true：包含 false：不包含
+     */
+    public boolean contains(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 查询动态数组中第一个指定元素e的下标
+     * @param e 指定元素e
+     * @return 第一个指定元素e的下标，不包含元素e则返回-1
+     */
+    public int indexOf(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 查询动态数组中最后一个指定元素e的下标
+     * @param e 指定元素e
+     * @return 最后一个指定元素e的下标，不包含元素e则返回-1
+     */
+    public int lastIndexOf(int e) {
+        for (int i = size - 1; i >= 0; i--) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 删除动态数组中指定索引位置的元素，并返回该元素
+     * @param index 指定的索引
+     * @return 指定索引位置的元素
+     */
+    public int remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Index is illegal.");
+        }
+        int res = data[index];
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+        return res;
+    }
+
+    /**
+     * 删除动态数组中第一个位置的元素，并返回该元素
+     * @return 指定索引位置的元素
+     */
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除动态数组中最后一个位置的元素，并返回该元素
+     * @return 指定索引位置的元素
+     */
+    public int removeLast() {
+        return remove(size - 1);
+    }
+
+    /**
+     * 从动态数组删除指定的元素，并查询是否成功删除了该元素
+     * @param e 指定的元素
+     * @return true：删除成功 false：删除失败
+     */
+    public boolean removeElement(int e) {
+        int index = indexOf(e);
+        if (index != -1) {
+            remove(index);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 从动态数组删除所有指定的元素
+     * @param e 指定的元素
+     */
+    public void removeAll(int e) {
+        int index;
+        while ((index = indexOf(e)) != -1) {
+            remove(index);
+        }
+    }
+
+    /**
      * 打印当前数组
      */
     @Override
