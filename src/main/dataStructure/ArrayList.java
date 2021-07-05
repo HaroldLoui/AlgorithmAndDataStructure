@@ -66,11 +66,12 @@ public class ArrayList<E> {
      * @param index 指定的位置
      */
     public void add(E e, int index) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("Add failed. ArrayList is full.");
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Index is illegal.");
+        }
+        // 扩容
+        if (size == data.length) {
+            resize(2 * data.length);
         }
         for (int i = size - 1; i >= index; i--) {
             data[i + 1] = data[i];
@@ -180,6 +181,12 @@ public class ArrayList<E> {
             data[i - 1] = data[i];
         }
         size--;
+        data[size] = null;
+
+        // 缩容
+        if (size == data.length / 4 && data.length / 2 > 0) {
+            resize(data.length / 2);
+        }
         return res;
     }
 
@@ -230,6 +237,7 @@ public class ArrayList<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+//        sb.append(String.format("size = %d, capacity = %d", size, getCapacity())).append("\n");
         sb.append("[");
         for (int i = 0; i < size; i++) {
             sb.append(data[i]);
@@ -239,5 +247,17 @@ public class ArrayList<E> {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    /**
+     * 改变容量操作
+     * @param newCapacity 新的容量
+     */
+    private void resize(int newCapacity) {
+        Object[] newData = new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 }
