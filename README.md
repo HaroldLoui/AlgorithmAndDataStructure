@@ -77,3 +77,4 @@ SelectionSort success, n = 100000 : 8.880783 s
 
 > 建议使用`Object[] data = new Object[n];`，在调用接口时进行强转：`E e = (E) data[index];`。参见：[ArrayList.java#L8](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java#L8)，[ArrayList.java#L96](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayList.java#L96)。
 
+#### 2、基于动态数组实现的栈：[ArrayStack.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayStack.java)

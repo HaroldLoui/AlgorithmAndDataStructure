@@ -102,6 +102,22 @@ public class ArrayList<E> {
     }
 
     /**
+     * 获取第一个位置的元素
+     * @return 第一个位置的元素
+     */
+    public E getFirst() {
+        return get(0);
+    }
+
+    /**
+     * 获取最后一个位置的元素
+     * @return 最后一个位置的元素
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    /**
      * 修改指定位置的元素为新的元素
      * @param e 新的元素
      * @param index 指定的位置
