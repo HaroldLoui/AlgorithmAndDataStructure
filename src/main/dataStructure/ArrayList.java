@@ -232,6 +232,16 @@ public class ArrayList<E> {
     }
 
     /**
+     * 清空数组
+     */
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
+        }
+        size = 0;
+    }
+
+    /**
      * 打印当前数组
      */
     @Override
