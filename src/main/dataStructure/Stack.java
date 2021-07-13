@@ -1,5 +1,9 @@
 package main.dataStructure;
 
+/**
+ * 先进后出（First In Last Out）-FILO
+ * @param <E> 范型
+ */
 public interface Stack<E> {
 
     /**
@@ -31,4 +35,9 @@ public interface Stack<E> {
      * @return true：空 false：非空
      */
     boolean isEmpty();
+
+    /**
+     * 清空栈
+     */
+    void clear();
 }

@@ -1,56 +1,46 @@
 package main.dataStructure;
 
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
-    /**
-     * 基于动态数组实现
-     */
     private ArrayList<E> array;
 
-    /**
-     * 构造一个指定容量的栈
-     * @param capacity 指定容量
-     */
-    public ArrayStack(int capacity) {
+    public ArrayQueue(int capacity) {
         array = new ArrayList<>(capacity);
     }
 
-    /**
-     * 构造一个容量为10的栈
-     */
-    public ArrayStack() {
+    public ArrayQueue() {
         array = new ArrayList<>();
     }
 
     /**
-     * 入栈操作
-     * @param e 入栈元素
+     * 入队操作
+     * @param e 入队元素
      */
     @Override
-    public void push(E e) {
+    public void enqueue(E e) {
         array.addLast(e);
     }
 
     /**
-     * 出栈操作（会删除）
-     * @return 栈顶元素
+     * 出队操作（会删除）
+     * @return 队首元素
      */
     @Override
-    public E pop() {
-        return array.removeLast();
+    public E dequeue() {
+        return array.removeFirst();
     }
 
     /**
-     * 查看栈顶元素（不会删除）
-     * @return 栈顶元素
+     * 查看队首元素
+     * @return 队首元素
      */
     @Override
-    public E peek() {
-        return array.getLast();
+    public E getFront() {
+        return array.getFirst();
     }
 
     /**
-     * 栈中元素的个数
+     * 队列中元素的个数
      * @return 元素的个数
      */
     @Override
@@ -59,7 +49,7 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 栈是否为空
+     * 队列是否为空
      * @return true：空 false：非空
      */
     @Override
@@ -68,15 +58,7 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 获取当前栈的容量
-     * @return 栈的容量
-     */
-    public int getCapacity() {
-        return array.getCapacity();
-    }
-
-    /**
-     * 清空栈
+     * 清空队列
      */
     @Override
     public void clear() {
@@ -84,7 +66,15 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 打印当前栈，右边是栈顶
+     * 获取当前队列的容量
+     * @return 队列的容量
+     */
+    public int getCapacity() {
+        return array.getCapacity();
+    }
+
+    /**
+     * 打印当前队列，左边是队首，右边是队尾
      */
     @Override
     public String toString() {
@@ -96,6 +86,7 @@ public class ArrayStack<E> implements Stack<E> {
                 sb.append(", ");
             }
         }
+        sb.append("]");
         return sb.toString();
     }
 }
