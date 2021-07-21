@@ -83,4 +83,45 @@ SelectionSort success, n = 100000 : 8.880783 s
 
 #### 3、队列
 
-- 基于动态数组实现的队列：[ArrayQueue.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayQueue.java)
+- 基于动态数组实现的数组队列：[ArrayQueue.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/ArrayQueue.java)
+- 循环队列：[LoopQueue.java](https://github.com/hanjinfeng0309/AlgorithmAndDataStructure/blob/main/src/main/dataStructure/LoopQueue.java)
+
+**数组队列与循环队列的效率比较（比较10w次的出队操作和入队操作）：**
+
+```java
+public class Test {
+
+    private static double testQueue(Queue<Integer> queue, int n) {
+        long startTime = System.nanoTime();
+        Random random = new Random();
+        for (int i = 0; i < n; i++) {
+            queue.enqueue(random.nextInt(Integer.MAX_VALUE));
+        }
+        for (int i = 0; i < n; i++) {
+            queue.dequeue();
+        }
+        long endTime = System.nanoTime();
+        return (endTime - startTime) / 1000000000.0;
+    }
+
+    public static void main(String[] args) {
+        int count = 100000;
+
+        Queue<Integer> arrayQueue = new ArrayQueue<>();
+        double time1 = testQueue(arrayQueue, count);
+        System.out.println("Array Queue, time: " + time1 + " s.");
+
+        Queue<Integer> loopQueue = new LoopQueue<>();
+        double time2 = testQueue(loopQueue, count);
+        System.out.println("Loop Queue, time: " + time2 + " s.");
+    }
+}
+```
+
+结果：循环队列的效率要高于普通的数组队列
+
+```
+Array Queue, time: 3.070826691 s.
+Loop Queue, time: 0.012834873 s.
+```
+
